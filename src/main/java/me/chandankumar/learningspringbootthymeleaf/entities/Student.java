@@ -5,13 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Entity(name = "Student")
 @Table(name = "student", uniqueConstraints = {
         @UniqueConstraint(name = "email_unique", columnNames = "email")
 })
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Student {
 
     @Id
@@ -24,5 +25,11 @@ public class Student {
     private String email;
     private String phoneNumber;
 
-
+    public Student(String firstName, String lastName, String course, String email, String phoneNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.course = course;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
 }
