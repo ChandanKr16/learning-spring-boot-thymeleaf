@@ -20,6 +20,11 @@ public class StudentController {
         return "index";
     }
 
+    @GetMapping("/create")
+    private String createStudent(Model model){
+        return "create";
+    }
+
 
 
 }

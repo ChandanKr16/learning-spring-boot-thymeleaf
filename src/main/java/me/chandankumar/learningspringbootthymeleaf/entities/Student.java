@@ -21,14 +21,14 @@ public class Student {
     private Long id;
     private String firstName;
     private String lastName;
-    private String course;
+    private String jobTitle;
     private String email;
     private String phoneNumber;
 
-    public Student(String firstName, String lastName, String course, String email, String phoneNumber) {
+    public Student(String firstName, String lastName, String jobTitle, String email, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.course = course;
+        this.jobTitle = jobTitle;
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
