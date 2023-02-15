@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Home</title>
+</head>
+<body>
+
+<div th:replace="~{common/header :: header}"></div>
+
+<div class="relative overflow-x-auto">
+
+<table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <tr>
+        <th scope="col" class="px-6 py-3">Id</th>
+        <th scope="col" class="px-6 py-3">First Name</th>
+        <th scope="col" class="px-6 py-3">Last Name</th>
+        <th scope="col" class="px-6 py-3">Course</th>
+        <th scope="col" class="px-6 py-3">Email</th>
+        <th scope="col" class="px-6 py-3">Phone Number</th>
+    </tr>
+    </thead>
+    <tr th:each="student : ${students}" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <td th:text="${student.id}" class="px-6 py-4"></td>
+        <td th:text="${student.firstName}" class="px-6 py-4"></td>
+        <td th:text="${student.lastName}" class="px-6 py-4"></td>
+        <td th:text="${student.course}" class="px-6 py-4"></td>
+        <td th:text="${student.email}" class="px-6 py-4"></td>
+        <td th:text="${student.phoneNumber}" class="px-6 py-4"></td>
+
+    </tr>
+</table>
+
+</div>
+
+<div th:replace="~{common/footer :: footer}"></div>
+</body>
+</html>

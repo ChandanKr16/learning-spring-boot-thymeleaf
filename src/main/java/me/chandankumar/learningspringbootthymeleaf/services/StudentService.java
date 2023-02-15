@@ -5,6 +5,8 @@ import me.chandankumar.learningspringbootthymeleaf.repositories.StudentRepositor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StudentService {
 
@@ -19,6 +21,10 @@ public class StudentService {
         if(studentRepository.findById(id).isPresent()){
             studentRepository.delete(studentRepository.findById(id).get());
         }
+    }
+
+    public List<Student> getAll(){
+        return studentRepository.findAll();
     }
 
 }
