@@ -22,7 +22,7 @@ public class LearningSpringBootThymeleafApplication {
     CommandLineRunner commandLineRunner(){
         return args -> {
             studentService.add(new Student("Adolphe", "Dayton", "Programmer Analyst I", "adayton3@skyrock.com", "78.94.151.226"));
-            studentService.add(new Student("Justin", "Carding", "Account Executive", "jcarding4@nydailystudentService.add(news.com", "222.10.176.249"));
+            studentService.add(new Student("Justin", "Carding", "Account Executive", "jcarding4@nydailystudentService.add", "222.10.176.249"));
             studentService.add(new Student("Arley", "Reolfi", "Physical Therapy Assistant", "areolfi5@marriott.com", "167.9.187.224"));
             studentService.add(new Student("Eugenius", "Osler", "Software Consultant", "eosler6@unicef.org", "237.97.203.160"));
             studentService.add(new Student("Tammy", "Tolchar", "Analog Circuit Design manager", "ttolchar7@wiley.com", "64.132.125.120"));
