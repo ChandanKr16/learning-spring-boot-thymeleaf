@@ -36,7 +36,6 @@ public class Student {
     private String email;
 
     @NotEmpty(message = "Phone number cannot be empty")
-    @Length(min = 10, max = 10, message = "Invalid phone number")
     private String phoneNumber;
 
     public Student(String firstName, String lastName, String jobTitle, String email, String phoneNumber) {

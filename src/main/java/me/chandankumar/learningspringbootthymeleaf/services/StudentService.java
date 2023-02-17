@@ -18,11 +18,7 @@ public class StudentService {
         return studentRepository.save(student);
     }
 
-    public void delete(Long id){
-        if(studentRepository.findById(id).isPresent()){
-            studentRepository.delete(studentRepository.findById(id).get());
-        }
-    }
+
 
     public List<Student> getAll(){
         return studentRepository.findAll();
@@ -30,6 +26,16 @@ public class StudentService {
 
     public Optional<Student> getByEmail(String email){
         return studentRepository.findByEmail(email);
+    }
+
+    public boolean delete(Long id){
+        Optional<Student> student = studentRepository.findById(id);
+
+        if(student.isPresent()){
+            studentRepository.delete(student.get());
+            return true;
+        }
+        return false;
     }
 
 }
