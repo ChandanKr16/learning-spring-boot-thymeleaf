@@ -69,6 +69,43 @@ public class StudentController {
         return "redirect:/students";
     }
 
+    @GetMapping(value = "/showStudentUpdateForm/{id}")
+    public String showStudentUpdateForm(@PathVariable("id") Long id, Model model){
+
+        Optional<Student> student = studentService.getById(id);
+
+        if(student.isEmpty()){
+            return "redirect:/students";
+        }
+
+        if(!model.containsAttribute("student"))
+            model.addAttribute("student", student.get());
+
+        return "update";
+    }
+
+    @PostMapping("/updateStudent")
+    public String updateStudent(@Valid Student student, BindingResult result, RedirectAttributes redirectAttributes){
+        if(result.hasErrors()){
+            StringBuilder error = new StringBuilder();
+            result.getAllErrors().forEach(objectError -> error.append(objectError.getDefaultMessage()).append(" "));
+            redirectAttributes.addFlashAttribute("student", student);
+            redirectAttributes.addFlashAttribute("error", error);
+            return "redirect:/students/showStudentUpdateForm/"+student.getId();
+        }
+
+        Optional<Student> studentOptional = studentService.getByEmail(student.getEmail());
+
+        if(studentOptional.isPresent() && !student.getId().equals(studentOptional.get().getId())){
+            redirectAttributes.addFlashAttribute("student", student);
+            redirectAttributes.addFlashAttribute("error", "This email is already taken");
+            return "redirect:/students/showStudentUpdateForm/"+student.getId();
+        }
+
+
+        studentService.update(student);
+        return "redirect:/students";
+    }
 
 
 

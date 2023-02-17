@@ -2,6 +2,7 @@ const errorMessage = document.getElementById('errorMessage');
 const errorMessageTrigger = document.getElementById('errorMessage');
 const deleteButtons = document.getElementsByName("delete-btn");
 
+
 const options = {
     transition: 'transition-opacity',
     duration: 500,
