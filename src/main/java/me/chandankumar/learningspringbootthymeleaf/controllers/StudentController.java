@@ -4,13 +4,11 @@ import jakarta.validation.Valid;
 import me.chandankumar.learningspringbootthymeleaf.entities.Student;
 import me.chandankumar.learningspringbootthymeleaf.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Optional;
@@ -107,6 +105,17 @@ public class StudentController {
         return "redirect:/students";
     }
 
+    @GetMapping("/search")
+    public String searchStudents(@RequestParam(value = "firstName", required = false) String firstName, Model model){
 
+        if(firstName != null) {
+            model.addAttribute("students", studentService.searchByFirstName(firstName));
+        }
+        else {
+            model.addAttribute("students", studentService.getAll());
+        }
+
+        return "index";
+    }
 
 }

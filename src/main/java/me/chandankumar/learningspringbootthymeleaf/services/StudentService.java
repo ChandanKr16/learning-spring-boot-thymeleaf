@@ -5,7 +5,6 @@ import me.chandankumar.learningspringbootthymeleaf.repositories.StudentRepositor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,7 +27,7 @@ public class StudentService {
     }
 
     public Optional<Student> getByEmail(String email){
-        return studentRepository.findByEmail(email);
+        return studentRepository.findStudentByEmail(email);
     }
 
     public boolean delete(Long id){
@@ -43,6 +42,10 @@ public class StudentService {
 
     public void update(Student updatedStudent){
         studentRepository.save(updatedStudent);
+    }
+
+    public List<Student> searchByFirstName(String firstName){
+        return studentRepository.findStudentsByFirstNameContainingIgnoreCase(firstName);
     }
 
 
